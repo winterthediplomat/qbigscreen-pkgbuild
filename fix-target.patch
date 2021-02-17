@@ -1,0 +1,4 @@
+26c26
+< else: unix:!android: target.path = $$[PREFIX]
+---
+> else: unix:!android: target.path = /usr/local/bin 
