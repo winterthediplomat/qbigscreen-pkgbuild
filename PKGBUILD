@@ -15,7 +15,7 @@ arch=("x86_64")
 url="http://wintermade.it"
 license=('unknown')
 groups=()
-depends=('qt5-gamepad')
+depends=('qt5-gamepad', 'streamlink', 'python', 'qjoypad', 'python-psutil')
 makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -55,4 +55,8 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 	cd ../${pkgname}-build
 	make INSTALL_ROOT="$pkgdir/" install
+        cd ..
+        mkdir --parents $pkgdir/opt/qbigscreen
+        cp ./scripts/*.* $pkgdir/opt/qbigscreen
+        chmod +x $pkgdir/opt/qbigscreen/*.*
 }
