@@ -8,7 +8,7 @@
 
 # Maintainer: Winter Harrison <winter@wintermade.it>
 pkgname=qbigscreen-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r2.4aab898
+pkgver=r16.0dcf092
 pkgrel=1
 pkgdesc="a very tailored launcher"
 arch=("x86_64")
@@ -23,7 +23,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git+file:///home/winter/bare-repos/qbigscreen.git')
+source=('git+file:///home/winter/bare-repos/qbigscreen.git#branch=add-cd-support')
 noextract=()
 md5sums=('SKIP')
 
@@ -55,7 +55,7 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 	cd ../${pkgname}-build
 	make INSTALL_ROOT="$pkgdir/" install
-        cd ..
+	cd "$srcdir/${pkgname%-git}"
         mkdir --parents $pkgdir/opt/qbigscreen
         cp ./scripts/*.* $pkgdir/opt/qbigscreen
         chmod +x $pkgdir/opt/qbigscreen/*.*
