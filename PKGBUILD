@@ -15,7 +15,7 @@ arch=("x86_64")
 url="http://wintermade.it"
 license=('unknown')
 groups=()
-depends=('qt5-gamepad' 'streamlink' 'python' 'qjoypad' 'python-psutil')
+depends=('qt5-gamepad' 'streamlink' 'python' 'antimicrox' 'python-psutil')
 makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -23,7 +23,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git+file:///home/winter/bare-repos/qbigscreen.git#branch=add-cd-support')
+source=('git+file:///home/winter/bare-repos/qbigscreen.git#branch=switch-to-antimicrox')
 noextract=()
 md5sums=('SKIP')
 
@@ -55,8 +55,11 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 	cd ../${pkgname}-build
 	make INSTALL_ROOT="$pkgdir/" install
-	cd "$srcdir/${pkgname%-git}"
+        # install support scripts	
+        cd "$srcdir/${pkgname%-git}"
         mkdir --parents $pkgdir/opt/qbigscreen
         cp ./scripts/*.* $pkgdir/opt/qbigscreen
         chmod +x $pkgdir/opt/qbigscreen/*.*
+        # install antimicrox layouts
+        cp ./layouts/* $pkgdir/opt/qbigscreen
 }
