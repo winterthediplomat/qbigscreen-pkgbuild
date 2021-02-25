@@ -23,7 +23,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git+file:///home/winter/bare-repos/qbigscreen.git#branch=switch-to-antimicrox')
+source=('git+file:///home/winter/bare-repos/qbigscreen.git#branch=master')
 noextract=()
 md5sums=('SKIP')
 
